@@ -1,0 +1,52 @@
+<ion-content scroll='false'>
+
+    <div class="titulo">
+      <h1>Cadastre-se no PiuPiuwer!</h1>
+    </div>
+  
+    <div padding>
+      <form (ngSubmit)="efetuaCadastro()">
+        
+        <ion-item>
+          <ion-label stacked>E-mail</ion-label>
+          <ion-input [(ngModel)]="email" name="email" type="text"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label stacked>Username</ion-label>
+          <ion-input [(ngModel)]="username" name="username" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Nome</ion-label>
+          <ion-input [(ngModel)]="nome" name="nome" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Sobrenome</ion-label>
+          <ion-input [(ngModel)]="sobrenome" name="sobrenome" type="text"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Senha</ion-label>
+          <ion-input [(ngModel)]="senha" name="senha" type="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Confirmar senha</ion-label>
+          <ion-input [(ngModel)]="confirma-senha" name="confirma-senha" type="password"></ion-input>
+        </ion-item>
+
+        <button ion-button block type="submit" class="cadastro">CADASTRAR</button>
+      
+      </form>
+
+      <div class="volta-login">
+        <p>Já tem uma conta?</p>
+        <button class='login' ion-button (click)="voltaParaLogin()">
+          Login
+        </button>
+      </div>
+
+    </div>
+  </ion-content>

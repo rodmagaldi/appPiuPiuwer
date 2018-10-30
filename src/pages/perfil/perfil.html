@@ -1,0 +1,90 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-slides pager>
+
+    <ion-slide class="perfil">
+      <ion-item no-lines>
+        <div class="foto">
+          <ion-avatar>
+            <img src="assets/img/avatar-padrao.jpg">
+          </ion-avatar>
+          <button ion-button icon-only round class="btn-tirar-foto">
+            <ion-icon name="camera"></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+
+      <ion-card>
+
+        <ion-item>
+          <ion-icon name="contact" item-left></ion-icon>
+          Nome
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="at" item-left></ion-icon>
+          <p>E-mail</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="text" item-left></ion-icon>
+          <p>Número de Pius</p>
+        </ion-item>
+      </ion-card>
+    </ion-slide>
+    
+    <ion-slide class="pius">
+      
+      <h1 class="meus-pius-titulo">Meus pius</h1>
+
+      <ion-list>
+        <ion-card>
+    
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="../../assets/img/avatar-padrao.jpg">
+            </ion-avatar>
+            <h2>Roland</h2>
+            <p>@vini_roland</p>
+          </ion-item>
+        
+          <ion-card-content>
+            <p>Meu nome é Roland e eu estou testando esse aplicativo!</p>
+          </ion-card-content>
+        
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon name="heart"></ion-icon>
+                Gostei
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon name="text"></ion-icon>
+                Zip zop
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note class="nota">
+                Horário
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        
+        </ion-card>
+
+      </ion-list>
+
+    </ion-slide>
+  </ion-slides>
+</ion-content>

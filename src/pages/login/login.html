@@ -1,0 +1,34 @@
+<ion-content scroll='false'>
+
+  <div class="titulo">
+    <h1>PiuPiuwer</h1>
+    <h2>É o que está piando.</h2>
+  </div>
+
+  <div padding>
+    <div class='imagem-logo'></div>
+    <form (ngSubmit)="efetuaLogin()">
+      
+      <ion-item>
+        <ion-label stacked>E-mail</ion-label>
+        <ion-input [(ngModel)]="email" name="email" type="text"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input [(ngModel)]="senha" name="senha" type="password"></ion-input>
+      </ion-item>
+
+      <button ion-button block type="submit" class="login">ENTRAR</button>
+    
+    </form>
+
+
+    <div class='cadastrar-info'>
+      <p>Ainda não tem uma conta?</p>
+      <button class='cadastrar' ion-button (click)="irParaCadastro()">
+        CADASTRE-SE
+      </button>
+    </div>
+  </div>
+</ion-content>

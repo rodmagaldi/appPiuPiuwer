@@ -1,0 +1,45 @@
+page-home {
+
+    .barra-piu {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+    }
+
+    .piu-input {
+        max-width: 75%;
+        border: 1px solid #E6ECF0;
+        border-radius: 10px;
+        padding-left: 5px;
+        margin-right: 10px;
+        margin-left: 9px;
+    }
+
+    .contador-digitos {
+        color: #1da1f2;
+        font-weight: bold;
+        margin-left: 15px;
+    }
+
+    .max-digitos {
+        color: #14171a;
+        font-weight: bold;
+    }
+
+    .heart-btn,
+    .share-btn {
+        color: #1da1f2;
+    }
+    
+    .nota {
+        position: absolute;
+        bottom: 15px;
+        right: 20px;
+    }
+
+
+    .erro {
+        color: red;
+    }
+
+}

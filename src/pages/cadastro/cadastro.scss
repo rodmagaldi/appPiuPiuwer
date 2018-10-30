@@ -1,0 +1,40 @@
+page-cadastro {
+
+    .titulo {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .volta-login {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .login,
+    .cadastro {
+        background-color: #1da1f2;
+        border-radius: 2em;
+    }
+
+    .cadastro {
+        margin-bottom: 50px;
+    }
+
+    .login {
+        padding-left: 3em;
+        padding-right: 3em;
+        margin-top: 10px;
+    }
+
+    .volta-login p {
+        color: #14171a;
+        font-size: 1.2em;
+    }
+
+    h1 {
+        color: #14171a;
+        font-weight: bold;
+    }
+}

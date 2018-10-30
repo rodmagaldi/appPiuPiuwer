@@ -1,0 +1,43 @@
+page-perfil {
+    background-color: #E6ECF0;
+
+    .foto {
+        position: relative;
+        width: 200px;
+        margin: auto;
+
+        ion-avatar img {
+            width: 200px;
+            height: 200px;
+            margin: auto;
+        }
+
+        .btn-tirar-foto {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+
+    .pius {
+        display: flex;
+        align-items: flex-start; 
+    }
+
+    .meus-pius-titulo {
+        color: #14171a;
+        font-weight: bold;
+    }
+
+    ion-card-content {
+        text-align: left;
+    }
+    
+    .swiper-slide {
+        overflow-y: scroll;
+        display: block;
+    }
+}

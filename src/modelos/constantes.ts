@@ -1,0 +1,1 @@
+export const url_endpoint:string = 'http://piupiuwer.polijunior.com.br/api/';
