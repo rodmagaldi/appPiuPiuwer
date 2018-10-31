@@ -1,5 +1,11 @@
 page-home {
 
+    .loading {
+        width: 64px;
+        height: 64px;
+        src: url("../../assets/img/bird.png")
+    }
+
     .barra-piu {
         display: flex;
         flex-direction: row;

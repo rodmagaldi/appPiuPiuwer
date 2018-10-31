@@ -6,21 +6,23 @@ import * as Constantes from '../../modelos/constantes'
 @Injectable()
 export class LoginProvider {
 
-  private _token: string;
+  public token: string;
 
-  constructor(public http: HttpClient) {
+  constructor(private _http: HttpClient) {
     console.log('Hello LoginProvider Provider');
   }
 
 
   efetuaLogin(username: string, password: string) {
     let URL = Constantes.url_endpoint + 'login/';
-    let header = {
+    let headers = {
       'Content-Type' : 'application/json',
+      // 'Authorization' : "JWT " + this.token,
     }
     let body = {
-      'username' : 
+      'username' : username,
+      'password' : password
     }
-
+    return this._http.post(URL, body, { headers });
   }
 }

@@ -10,6 +10,9 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { LoginPage } from '../pages/login/login';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { LoginProvider } from '../providers/login/login';
+import { HttpClientModule } from '@angular/common/http';
+import { ListaPiusProvider } from '../providers/lista-pius/lista-pius';
+import { ListaUsuariosProvider } from '../providers/lista-usuarios/lista-usuarios';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { LoginProvider } from '../providers/login/login';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +36,10 @@ import { LoginProvider } from '../providers/login/login';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiServiceProvider,
-    LoginProvider
+    LoginProvider,
+    ListaPiusProvider,
+    ApiServiceProvider,
+    ListaUsuariosProvider
   ]
 })
 export class AppModule {}

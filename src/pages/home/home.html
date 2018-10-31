@@ -10,25 +10,25 @@
   </div>
 
   <ion-list>
-    <ion-card>
+    <ion-card *ngFor="let piu of pius">
 
       <ion-item>
         <ion-avatar item-start>
           <img src="../../assets/img/avatar-padrao.jpg">
         </ion-avatar>
         <h2>Roland</h2>
-        <p>@vini_roland</p>
+        <p>{{ piu.usuario }}</p>
       </ion-item>
     
       <ion-card-content>
-        <p>Meu nome é Roland e eu estou testando esse aplicativo!</p>
+        <p>{{ piu.conteudo }}</p>
       </ion-card-content>
     
       <ion-row>
         <ion-col>
           <button class="heart-btn" ion-button icon-start clear small>
-            <ion-icon name="heart"></ion-icon>
-            Gostei
+            <ion-icon name="star"></ion-icon>
+            Destacar
           </button>
         </ion-col>
         <ion-col>
@@ -39,7 +39,7 @@
         </ion-col>
         <ion-col center text-center>
           <ion-note class="nota">
-            Horário
+            Data
           </ion-note>
         </ion-col>
       </ion-row>
