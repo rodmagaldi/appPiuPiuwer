@@ -61,7 +61,20 @@ export class CadastroPage {
 
       this._cadastrarProvider.cadastrarUsuario(this.username, this.password, this.first_name, this.last_name, this.email).subscribe(
         () => {
-          this.navCtrl.setRoot(LoginPage)
+          this._alertCtrl.create(
+            {
+              title: "Pronto!",
+              subTitle: "Seu cadastro foi realizado com sucesso!",
+              buttons: [
+                {
+                  text: "Fazer Login",
+                  handler: () => {
+                    this.voltaParaLogin();
+                  }
+                }
+              ]
+            }
+          ).present();
         },
         erro => {
           console.error(erro);
