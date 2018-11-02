@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { CadastrarProvider } from '../../providers/cadastrar/cadastrar';
 
-/**
- * Generated class for the CadastroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,11 +11,64 @@ import { LoginPage } from '../login/login';
 })
 export class CadastroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  public username;
+  public email;
+  public first_name;
+  public last_name;
+  public password;
+  public confirm_password;
+
+
+  constructor(public navCtrl: NavController, 
+    private _cadastrarProvider: CadastrarProvider,
+    private _alertCtrl: AlertController,
+    public navParams: NavParams) {
   }
 
   voltaParaLogin() {
     this.navCtrl.setRoot(LoginPage);
+  }
+
+  cadastrarUsuario() {
+
+    if (!this.email || !this.first_name || !this.last_name || !this.username || !this.password || !this.confirm_password) {
+      this._alertCtrl.create(
+        {
+          title: 'Ops!',
+          subTitle: 'Parece que você não comPIUtou todos os campos!',
+          buttons: [
+            {
+              text: "Vou arrumar!",
+              cssClass: "aviso-erro-btn"}
+          ]
+        }
+      ).present();
+    } else if (this.confirm_password != this.password) {
+      this._alertCtrl.create(
+        {
+          title: 'Ops!',
+          subTitle: 'Parece que você não se deciPIU sobre a sua senha!',
+          buttons: [
+            {
+              text: "Vou confirmar a senha corretamente!",
+              cssClass: "aviso-erro-btn"
+            }
+          ]
+        }
+      ).present();  
+    } else {
+
+      this._cadastrarProvider.cadastrarUsuario(this.username, this.password, this.first_name, this.last_name, this.email).subscribe(
+        () => {
+          this.navCtrl.setRoot(LoginPage)
+        },
+        erro => {
+          console.error(erro);
+        }
+      )
+
+    }
   }
 
 }

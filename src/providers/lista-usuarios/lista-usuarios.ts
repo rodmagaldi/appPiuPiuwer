@@ -1,17 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as Constantes from '../../modelos/constantes'
+import { Usuario } from '../../modelos/usuario';
 
-/*
-  Generated class for the ListaUsuariosProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ListaUsuariosProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello ListaUsuariosProvider Provider');
+  public email: string;
+  public first_name: string;
+  public foto_perfil;
+  public id: number;
+  public last_name: string;
+  public username: string;
+
+  constructor(private _http: HttpClient) {
   }
 
+  listaUsuarios() {
+    return this._http.get<Usuario[]>(Constantes.url_endpoint+"usuarios/")
+  }
 }

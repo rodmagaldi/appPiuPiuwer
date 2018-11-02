@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
 import { LoginProvider } from '../../providers/login/login'
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -14,6 +15,7 @@ export class LoginPage {
   public senha;
 
   constructor(public navCtrl: NavController,
+    private _alertCtrl: AlertController,
     public navParams: NavParams,
     private _login: LoginProvider) {
   }
@@ -26,9 +28,21 @@ export class LoginPage {
     this._login.efetuaLogin(this.username, this.senha).subscribe(
       data => {
         this._login.token = data['token'];
+        this.navCtrl.setRoot(HomePage)
       },
-      erro => {
-        console.error(erro);
+      () => {
+        this._alertCtrl.create(
+          {
+            title: "Ops!",
+            subTitle: "PIUrece que algo deu errado!",
+            buttons: [
+              {
+                text: "Tentar novamente",
+                cssClass: "aviso-erro-btn"
+              }
+            ]
+          }
+        ).present();
       }
     )
   }

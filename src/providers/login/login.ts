@@ -9,7 +9,6 @@ export class LoginProvider {
   public token: string;
 
   constructor(private _http: HttpClient) {
-    console.log('Hello LoginProvider Provider');
   }
 
 

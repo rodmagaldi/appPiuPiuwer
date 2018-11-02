@@ -4,9 +4,11 @@
     <button ion-button menuToggle>
       <ion-icon name="logo-twitter"></ion-icon>
     </button>
-    <ion-input class="piu-input" [(ngModel)]="piu" name="piu" type="text" placeholder="Diga o que está piando..." (input)="validaPiu()"></ion-input>
-    <p class="contador-digitos">0</p>
-    <p id="max-digitos">/140</p>
+    <form (ngSubmit)="piarPiu()">
+      <ion-input class="piu-input" [(ngModel)]="piu" name="piu" type="text" placeholder="Diga o que está piando..." (input)="validaPiu($event)"></ion-input>
+    </form>
+    <p class="contador-digitos"> {{ contador }}</p>
+    <p class="max-digitos">/140</p>
   </div>
 
   <ion-list>
@@ -21,7 +23,7 @@
       </ion-item>
     
       <ion-card-content>
-        <p>{{ piu.conteudo }}</p>
+        <p (ngModel)="mensagem">{{ piu.conteudo }}</p>
       </ion-card-content>
     
       <ion-row>
@@ -32,8 +34,8 @@
           </button>
         </ion-col>
         <ion-col>
-          <button class="share-btn" ion-button icon-start clear small>
-            <ion-icon name="text"></ion-icon>
+          <button class="share-btn" ion-button icon-start clear small (click)="vemDeZap()">
+            <ion-icon name="logo-whatsapp"></ion-icon>
             Zip zop
           </button>
         </ion-col>

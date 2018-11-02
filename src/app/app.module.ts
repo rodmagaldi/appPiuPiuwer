@@ -6,13 +6,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { PerfilPage } from '../pages/perfil/perfil';
 import { LoginPage } from '../pages/login/login';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { LoginProvider } from '../providers/login/login';
 import { HttpClientModule } from '@angular/common/http';
 import { ListaPiusProvider } from '../providers/lista-pius/lista-pius';
 import { ListaUsuariosProvider } from '../providers/lista-usuarios/lista-usuarios';
+import { CadastrarProvider } from '../providers/cadastrar/cadastrar';
+import { SocialSharing } from '@ionic-native/social-sharing'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { ListaUsuariosProvider } from '../providers/lista-usuarios/lista-usuario
     LoginProvider,
     ListaPiusProvider,
     ApiServiceProvider,
-    ListaUsuariosProvider
+    ListaUsuariosProvider,
+    CadastrarProvider,
+    SocialSharing,
   ]
 })
 export class AppModule {}

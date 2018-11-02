@@ -5,7 +5,7 @@
     </div>
   
     <div padding>
-      <form (ngSubmit)="efetuaCadastro()">
+      <form (ngSubmit)="cadastrarUsuario()">
         
         <ion-item>
           <ion-label stacked>E-mail</ion-label>
@@ -19,22 +19,22 @@
 
         <ion-item>
           <ion-label stacked>Nome</ion-label>
-          <ion-input [(ngModel)]="nome" name="nome" type="text"></ion-input>
+          <ion-input [(ngModel)]="first_name" name="first_name" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Sobrenome</ion-label>
-          <ion-input [(ngModel)]="sobrenome" name="sobrenome" type="text"></ion-input>
+          <ion-input [(ngModel)]="last_name" name="last_name" type="text"></ion-input>
         </ion-item>
   
         <ion-item>
           <ion-label stacked>Senha</ion-label>
-          <ion-input [(ngModel)]="senha" name="senha" type="password"></ion-input>
+          <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Confirmar senha</ion-label>
-          <ion-input [(ngModel)]="confirma-senha" name="confirma-senha" type="password"></ion-input>
+          <ion-input [(ngModel)]="confirm_password" name="confirm_password" type="password"></ion-input>
         </ion-item>
 
         <button ion-button block type="submit" class="cadastro">CADASTRAR</button>
