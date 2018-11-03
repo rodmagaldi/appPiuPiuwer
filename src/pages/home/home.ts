@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { ListaPiusProvider } from '../../providers/lista-pius/lista-pius';
 import { Piu } from '../../modelos/piu';
-import { ListaUsuariosProvider } from '../../providers/lista-usuarios/lista-usuarios';
 import { Usuario } from '../../modelos/usuario';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CriaPiuProvider } from '../../providers/cria-piu/cria-piu';
@@ -27,9 +26,10 @@ export class HomePage {
   public data: string = new Date().toISOString();
   public usuario: number;
 
+  public counter: HTMLElement;
+
   constructor(public navCtrl: NavController,
     private _listaPius: ListaPiusProvider,
-    private _listaUsuarios: ListaUsuariosProvider,
     private _loadingCrtl: LoadingController,
     private _socialSharing: SocialSharing,
     private _alertCtrl: AlertController,
@@ -52,6 +52,7 @@ export class HomePage {
           this.pius = pius;
           loading.dismiss();
           this.piusInvertido = this.pius.reverse();
+          this.counter = document.querySelector(".contador-digitos");
         },
         erro => {
           console.error(erro);
@@ -64,9 +65,13 @@ export class HomePage {
     
     if (this.piu.length > 140) {
       event.target.classList.add("erro")
+      this.counter.classList.remove("contador-digitos");
+      this.counter.classList.add("erro-contador");
       
     } else {
-      event.target.classList.remove("erro")
+      event.target.classList.remove("erro");
+      this.counter.classList.remove("erro-contador");
+      this.counter.classList.add("contador-digitos");
     }
   }
 
@@ -92,10 +97,11 @@ export class HomePage {
         }
       ).present();
     } else {
-      this.usuario = this._login.globalUserID;
+      this.usuario = this._login.userID;
       this._criaPiu.criaPiu(this.favoritado, this.piu, this.data, this.usuario).subscribe(
         () => {
           console.log("Sucesso!")
+          this.navCtrl.setRoot(this.navCtrl.getActive().component);
         },
         erro => {
           console.log(erro)

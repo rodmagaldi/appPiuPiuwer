@@ -37,7 +37,7 @@
 
         <ion-item>
           <ion-icon name="text" item-left></ion-icon>
-          <p>Número de Pius</p>
+          <p> {{ contaMeusPius }} pius piados</p>
         </ion-item>
       </ion-card>
     </ion-slide>
@@ -47,18 +47,18 @@
       <h1 class="meus-pius-titulo">Meus pius</h1>
 
       <ion-list>
-        <ion-card>
+        <ion-card *ngFor="let meuPiu of meusPius">
     
           <ion-item>
             <ion-avatar item-start>
               <img src="../../assets/img/avatar-padrao.jpg">
             </ion-avatar>
             <h2>Roland</h2>
-            <p>@vini_roland</p>
+            <p>{{ meuPiu.usuario }}</p>
           </ion-item>
         
           <ion-card-content>
-            <p>Meu nome é Roland e eu estou testando esse aplicativo!</p>
+            <p>{{ meuPiu.conteudo }}</p>
           </ion-card-content>
         
           <ion-row>

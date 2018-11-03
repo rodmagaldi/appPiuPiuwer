@@ -1,8 +1,9 @@
 <ion-content padding>
 
+  
   <div class="barra-piu">
     <button ion-button menuToggle>
-      <ion-icon name="logo-twitter"></ion-icon>
+      <ion-icon name="logo-twitter" item-left></ion-icon>
     </button>
     <form (ngSubmit)="piarPiu()">
       <ion-input class="piu-input" [(ngModel)]="piu" name="piu" type="text" placeholder="Diga o que está piando..." (input)="validaPiu($event)"></ion-input>
@@ -10,6 +11,7 @@
     <p class="contador-digitos"> {{ contador }}</p>
     <p class="max-digitos">/140</p>
   </div>
+  
 
   <ion-list>
     <ion-card *ngFor="let piu of piusInvertido">

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as Constantes from '../../modelos/constantes'
+import { Usuario } from '../../modelos/usuario';
 
 
 @Injectable()
@@ -8,7 +9,9 @@ export class LoginProvider {
 
   public globalToken: string;
   public decodedJSON;
-  public globalUserID;
+  public userID;
+  public username;
+  public email;
 
   constructor(private _http: HttpClient) {
   }
@@ -20,7 +23,9 @@ export class LoginProvider {
       payload = token.split(".")[1];
       payload = window.atob(payload);
       this.decodedJSON = JSON.parse(payload);
-      this.globalUserID = this.decodedJSON['user_id'];
+      this.userID = this.decodedJSON['user_id'];
+      this.username = this.decodedJSON['username'];
+      this.email = this.decodedJSON['email']
       return true;
     } else {
       return false;
@@ -36,6 +41,6 @@ export class LoginProvider {
       'username' : username,
       'password' : password
     }
-    return this._http.post(URL, body, { headers });
+    return this._http.post<Usuario>(URL, body, { headers });
   }
 }
