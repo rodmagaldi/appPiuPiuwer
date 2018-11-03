@@ -5,19 +5,14 @@ import { Piu } from '../../modelos/piu';
 import { ListaUsuariosProvider } from '../../providers/lista-usuarios/lista-usuarios';
 import { Usuario } from '../../modelos/usuario';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { CriaPiuProvider } from '../../providers/cria-piu/cria-piu';
+import { LoginProvider } from '../../providers/login/login';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  public email: string;
-  public first_name: string;
-  public foto_perfil;
-  public id: number;
-  public last_name: string;
-  public username: string;
 
   public pius: Piu[];
   public usuarios: Usuario[];
@@ -27,12 +22,19 @@ export class HomePage {
 
   public piusInvertido: Piu[];
 
+  public favoritado: boolean = false;
+  // public conteudo: string; O PIU eh o conteudo
+  public data: string = new Date().toISOString();
+  public usuario: number;
+
   constructor(public navCtrl: NavController,
     private _listaPius: ListaPiusProvider,
     private _listaUsuarios: ListaUsuariosProvider,
     private _loadingCrtl: LoadingController,
     private _socialSharing: SocialSharing,
-    private _alertCtrl: AlertController) {
+    private _alertCtrl: AlertController,
+    private _criaPiu: CriaPiuProvider,
+    private _login: LoginProvider) {
 
       var loading = this._loadingCrtl.create({
         spinner: 'hide',
@@ -50,16 +52,6 @@ export class HomePage {
           this.pius = pius;
           loading.dismiss();
           this.piusInvertido = this.pius.reverse();
-        },
-        erro => {
-          console.error(erro);
-        }
-      )
-
-      this._listaUsuarios.listaUsuarios().subscribe(
-        (usuarios) => {
-          this.usuarios = usuarios;
-          console.log(this.usuarios);
         },
         erro => {
           console.error(erro);
@@ -100,7 +92,15 @@ export class HomePage {
         }
       ).present();
     } else {
-      console.log("AQUI ENTRA A PARTE DE PIAR DE FATO")
+      this.usuario = this._login.globalUserID;
+      this._criaPiu.criaPiu(this.favoritado, this.piu, this.data, this.usuario).subscribe(
+        () => {
+          console.log("Sucesso!")
+        },
+        erro => {
+          console.log(erro)
+        }
+      )
     }
   }
 

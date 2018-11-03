@@ -27,8 +27,9 @@ export class LoginPage {
   efetuaLogin(){
     this._login.efetuaLogin(this.username, this.senha).subscribe(
       data => {
-        this._login.token = data['token'];
-        this.navCtrl.setRoot(HomePage)
+        this._login.globalToken = data['token'];
+        this._login.tokenDecode();
+        this.navCtrl.setRoot(HomePage);
       },
       () => {
         this._alertCtrl.create(

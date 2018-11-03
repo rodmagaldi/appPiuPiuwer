@@ -6,17 +6,31 @@ import * as Constantes from '../../modelos/constantes'
 @Injectable()
 export class LoginProvider {
 
-  public token: string;
+  public globalToken: string;
+  public decodedJSON;
+  public globalUserID;
 
   constructor(private _http: HttpClient) {
   }
 
+  tokenDecode() {
+    const token = this.globalToken;
+    let payload;
+    if (token) {
+      payload = token.split(".")[1];
+      payload = window.atob(payload);
+      this.decodedJSON = JSON.parse(payload);
+      this.globalUserID = this.decodedJSON['user_id'];
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   efetuaLogin(username: string, password: string) {
     let URL = Constantes.url_endpoint + 'login/';
     let headers = {
       'Content-Type' : 'application/json',
-      // 'Authorization' : "JWT " + this.token,
     }
     let body = {
       'username' : username,

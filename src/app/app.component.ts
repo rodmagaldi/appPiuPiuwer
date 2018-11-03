@@ -12,7 +12,7 @@ import { LoginPage } from '../pages/login/login';
 })
 export class MyApp {
   @ViewChild(Nav) public nav: Nav;
-  rootPage:any = HomePage;
+  rootPage:any = LoginPage;
 
   public paginas = [
     { titulo: "Perfil", componente: PerfilPage.name, icone: "person" }
