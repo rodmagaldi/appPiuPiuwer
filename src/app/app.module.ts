@@ -15,6 +15,7 @@ import { ListaUsuariosProvider } from '../providers/lista-usuarios/lista-usuario
 import { CadastrarProvider } from '../providers/cadastrar/cadastrar';
 import { SocialSharing } from '@ionic-native/social-sharing'
 import { CriaPiuProvider } from '../providers/cria-piu/cria-piu';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CriaPiuProvider } from '../providers/cria-piu/cria-piu';
     CadastrarProvider,
     SocialSharing,
     CriaPiuProvider,
+    Camera,
   ]
 })
 export class AppModule {}

@@ -7,6 +7,8 @@ import { Usuario } from '../../modelos/usuario';
 @Injectable()
 export class LoginProvider {
 
+  public usuario: Usuario;
+
   public globalToken: string;
   public decodedJSON;
   public userID;
@@ -43,4 +45,7 @@ export class LoginProvider {
     }
     return this._http.post<Usuario>(URL, body, { headers });
   }
+
 }
+
+

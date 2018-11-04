@@ -30,6 +30,7 @@ page-perfil {
     .meus-pius-titulo {
         color: #14171a;
         font-weight: bold;
+        margin-bottom: 20px;
     }
 
     ion-card-content {
@@ -39,5 +40,11 @@ page-perfil {
     .swiper-slide {
         overflow-y: scroll;
         display: block;
+    }
+
+    .nota {
+        position: absolute;
+        bottom: 15px;
+        right: 20px;
     }
 }

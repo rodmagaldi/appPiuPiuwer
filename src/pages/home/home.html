@@ -2,10 +2,10 @@
 
   
   <div class="barra-piu">
-    <button ion-button menuToggle>
-      <ion-icon name="logo-twitter" item-left></ion-icon>
+    <button ion-button menuToggle clear class="botao-menu">
+      <img src="../../assets/img/bird.png">
     </button>
-    <form (ngSubmit)="piarPiu()">
+    <form (ngSubmit)="piarPiu()" class="piu-form">
       <ion-input class="piu-input" [(ngModel)]="piu" name="piu" type="text" placeholder="Diga o que está piando..." (input)="validaPiu($event)"></ion-input>
     </form>
     <p class="contador-digitos"> {{ contador }}</p>
@@ -14,23 +14,23 @@
   
 
   <ion-list>
-    <ion-card *ngFor="let piu of piusInvertido">
+    <ion-card *ngFor="let piuCompleto of piusInvertido">
 
       <ion-item>
         <ion-avatar item-start>
           <img src="../../assets/img/avatar-padrao.jpg">
         </ion-avatar>
         <h2>Roland</h2>
-        <p>{{ piu.usuario }}</p>
+        <p>{{ piuCompleto.usuario }}</p>
       </ion-item>
     
       <ion-card-content>
-        <p (ngModel)="mensagem">{{ piu.conteudo }}</p>
+        <p (ngModel)="mensagem">{{ piuCompleto.conteudo }}</p>
       </ion-card-content>
     
       <ion-row>
         <ion-col>
-          <button class="heart-btn" ion-button icon-start clear small>
+          <button class="heart-btn" ion-button icon-start clear small (click)="destacaPiu()">
             <ion-icon name="star"></ion-icon>
             Destacar
           </button>
@@ -42,8 +42,8 @@
           </button>
         </ion-col>
         <ion-col center text-center>
-          <ion-note class="nota">
-            Data
+          <ion-note class="nota" displayFormat="MM/DD/YY">
+            {{ piuCompleto.data | date: 'dd/MM/yy' }}
           </ion-note>
         </ion-col>
       </ion-row>

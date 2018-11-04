@@ -7,8 +7,8 @@
                         <img src="assets/img/avatar-padrao.jpg">
                     </ion-avatar>
                 </div>
-                <h2 class='nome'>NOME</h2>
-                <p class='email'>E-MAIL</p>
+                <h2 class='nome'>{{ first_name }}  {{ last_name }}</h2>
+                <p class='email'>@{{ username }}</p>
             </ion-item>
             <ion-list no-lines>
                 <button ion-item menuClose *ngFor="let pagina of paginas" (click)="irParaPagina(pagina.componente)">

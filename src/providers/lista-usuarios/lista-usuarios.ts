@@ -6,6 +6,8 @@ import { Usuario } from '../../modelos/usuario';
 @Injectable()
 export class ListaUsuariosProvider {
 
+  public usuarioLogado: Usuario;
+
   public email: string;
   public first_name: string;
   public foto_perfil;
@@ -18,5 +20,9 @@ export class ListaUsuariosProvider {
 
   listaUsuarios() {
     return this._http.get<Usuario[]>(Constantes.url_endpoint+"usuarios/")
+  }
+
+  infoUsuario(identificacao: number) {
+    return this._http.get<Usuario>(Constantes.url_endpoint+"usuarios/"+identificacao)
   }
 }

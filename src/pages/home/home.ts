@@ -21,9 +21,12 @@ export class HomePage {
 
   public piusInvertido: Piu[];
 
+  public piusAuxiliar: Piu[];
+
   public favoritado: boolean = false;
   // public conteudo: string; O PIU eh o conteudo
-  public data: string = new Date().toISOString();
+  public data_sem_string: Date = new Date();
+  public data: string = this.data_sem_string.toISOString();
   public usuario: number;
 
   public counter: HTMLElement;
@@ -38,12 +41,7 @@ export class HomePage {
 
       var loading = this._loadingCrtl.create({
         spinner: 'hide',
-        content:`
-          <div class="custom-spinner-container">
-            <img class="loading"></img>
-          </div>`
-          +
-          "Pius sendo piados..."
+        content: "Pius sendo piados..."
       });
       loading.present();
 
@@ -108,6 +106,11 @@ export class HomePage {
         }
       )
     }
+  }
+
+  destacaPiu() {
+    this.piusAuxiliar = this.piusInvertido;
+    console.log("IMPLEMENTAR ESSE CARALHO")
   }
 
   vemDeZap() {

@@ -6,10 +6,22 @@ page-home {
         src: url("../../assets/img/bird.png")
     }
 
+    .botao-menu {
+        background-color: transparent;
+        width: 80px;
+        height: 80px;
+        margin-top: -15px;
+        margin-left: -325px;
+    }
+
     .barra-piu {
         display: flex;
         flex-direction: row;
         margin-top: 10px;
+    }
+
+    .piu-form {
+        margin-left: 60px;
     }
 
     .piu-input {

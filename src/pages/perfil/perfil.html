@@ -12,6 +12,9 @@
   <ion-slides pager>
 
     <ion-slide class="perfil">
+
+      <h1 class="meus-pius-titulo">{{ first_name }}  {{ last_name }}</h1>
+
       <ion-item no-lines>
         <div class="foto">
           <ion-avatar>
@@ -27,12 +30,12 @@
 
         <ion-item>
           <ion-icon name="contact" item-left></ion-icon>
-          Nome
+          {{ first_name }}  {{ last_name }}
         </ion-item>
 
         <ion-item>
           <ion-icon name="at" item-left></ion-icon>
-          <p>E-mail</p>
+          <p>{{ email }}</p>
         </ion-item>
 
         <ion-item>
@@ -44,7 +47,7 @@
     
     <ion-slide class="pius">
       
-      <h1 class="meus-pius-titulo">Meus pius</h1>
+      <h1 class="meus-pius-titulo">Pius de {{ first_name }}  {{last_name}}</h1>
 
       <ion-list>
         <ion-card *ngFor="let meuPiu of meusPius">
@@ -53,8 +56,8 @@
             <ion-avatar item-start>
               <img src="../../assets/img/avatar-padrao.jpg">
             </ion-avatar>
-            <h2>Roland</h2>
-            <p>{{ meuPiu.usuario }}</p>
+            <h2>{{ first_name }}  {{ last_name }}</h2>
+            <p>@{{ username }}</p>
           </ion-item>
         
           <ion-card-content>
@@ -64,19 +67,19 @@
           <ion-row>
             <ion-col>
               <button ion-button icon-start clear small>
-                <ion-icon name="heart"></ion-icon>
-                Gostei
+                <ion-icon name="star"></ion-icon>
+                Destacar
               </button>
             </ion-col>
             <ion-col>
-              <button ion-button icon-start clear small>
+              <button ion-button icon-start clear small (click)="vemDeZap()">
                 <ion-icon name="text"></ion-icon>
                 Zip zop
               </button>
             </ion-col>
             <ion-col center text-center>
               <ion-note class="nota">
-                Horário
+                {{ meuPiu.data | date: 'dd/MM/yy' }}
               </ion-note>
             </ion-col>
           </ion-row>
