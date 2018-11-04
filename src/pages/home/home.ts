@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController, MenuController } from 'ionic-angular';
 import { ListaPiusProvider } from '../../providers/lista-pius/lista-pius';
 import { Piu } from '../../modelos/piu';
 import { Usuario } from '../../modelos/usuario';
@@ -21,13 +21,15 @@ export class HomePage {
 
   public piusInvertido: Piu[];
 
-  public piusAuxiliar: Piu[];
+  public piusInvertidoFavoritado: Piu[] = [];
+  public piusInvertidoNaoFavoritado: Piu[] = [];
 
   public favoritado: boolean = false;
-  // public conteudo: string; O PIU eh o conteudo
+  // public conteudo: string; O PIU já é o conteudo
   public data_sem_string: Date = new Date();
   public data: string = this.data_sem_string.toISOString();
   public usuario: number;
+  public idDoPiu: number;
 
   public counter: HTMLElement;
 
@@ -37,7 +39,10 @@ export class HomePage {
     private _socialSharing: SocialSharing,
     private _alertCtrl: AlertController,
     private _criaPiu: CriaPiuProvider,
-    private _login: LoginProvider) {
+    private _login: LoginProvider,
+    public menu: MenuController) {
+
+      this.menu.enable(true);
 
       var loading = this._loadingCrtl.create({
         spinner: 'hide',
@@ -50,6 +55,13 @@ export class HomePage {
           this.pius = pius;
           loading.dismiss();
           this.piusInvertido = this.pius.reverse();
+          for (let piu of this.piusInvertido) {
+            if (piu.favoritado) {
+              this.piusInvertidoFavoritado.push(piu)
+            } else {
+              this.piusInvertidoNaoFavoritado.push(piu)
+            }
+          }
           this.counter = document.querySelector(".contador-digitos");
         },
         erro => {
@@ -108,8 +120,30 @@ export class HomePage {
     }
   }
 
+  doRefresh(refresher) {
+
+    this._listaPius.listaPius().subscribe(
+      () => {
+        refresher.complete();
+      },
+      erro => {
+        console.error(erro);
+      }
+    )
+  }
+
+  doInfinite(infiniteScroll) {
+
+    this._listaPius.listaPius().subscribe(
+      data => {
+        this.piusInvertido.concat(data)
+        infiniteScroll.complete();    
+      }
+    )
+    
+  }
+
   destacaPiu() {
-    this.piusAuxiliar = this.piusInvertido;
     console.log("IMPLEMENTAR ESSE CARALHO")
   }
 

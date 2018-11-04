@@ -25,4 +25,5 @@ export class ListaUsuariosProvider {
   infoUsuario(identificacao: number) {
     return this._http.get<Usuario>(Constantes.url_endpoint+"usuarios/"+identificacao)
   }
+
 }

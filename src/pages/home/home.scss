@@ -66,4 +66,19 @@ page-home {
         font-weight: bold;
         margin-left: 15px;
     }
+
+    .favoritado {
+        color: #1da1f2;
+    }
+
+    .favoritado-msg {
+        font-weight: bold;
+    }
+
+    ion-spinner * {
+        width: 28px;
+        height: 28px;
+        stroke: #1da1f2;
+        fill: #1da1f2;
+    }
 }

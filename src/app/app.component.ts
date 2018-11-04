@@ -3,7 +3,6 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { LoginPage } from '../pages/login/login';
 import { ListaUsuariosProvider } from '../providers/lista-usuarios/lista-usuarios';
@@ -37,6 +36,9 @@ export class MyApp {
       splashScreen.hide();
     });
 
+  }
+
+  irParaPagina (componente) {
     this.id = this._login.userID;
     this._listaUsuarios.infoUsuario(this.id).subscribe(
       (usuario) => {
@@ -51,9 +53,6 @@ export class MyApp {
         console.error(erro);
       }
     )
-  }
-
-  irParaPagina (componente) {
     this.nav.push(componente)
   }
 

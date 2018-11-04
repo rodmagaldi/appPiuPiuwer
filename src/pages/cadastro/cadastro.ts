@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { CadastrarProvider } from '../../providers/cadastrar/cadastrar';
 
@@ -23,7 +23,9 @@ export class CadastroPage {
   constructor(public navCtrl: NavController, 
     private _cadastrarProvider: CadastrarProvider,
     private _alertCtrl: AlertController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public menu: MenuController) {
+      this.menu.enable(false);
   }
 
   voltaParaLogin() {

@@ -1,6 +1,13 @@
 <ion-content padding>
 
-  
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+    pullingText="Refrescar"
+    refreshingSpinner="crescent"
+    refreshingText="Piando..."></ion-refresher-content>
+  </ion-refresher>
+    
+
   <div class="barra-piu">
     <button ion-button menuToggle clear class="botao-menu">
       <img src="../../assets/img/bird.png">
@@ -14,14 +21,51 @@
   
 
   <ion-list>
-    <ion-card *ngFor="let piuCompleto of piusInvertido">
+
+    <ion-card *ngFor="let piuCompletoFavoritado of piusInvertidoFavoritado">
 
       <ion-item>
         <ion-avatar item-start>
           <img src="../../assets/img/avatar-padrao.jpg">
         </ion-avatar>
-        <h2>Roland</h2>
-        <p>{{ piuCompleto.usuario }}</p>
+        <h2 class="favoritado">{{ piuCompletoFavoritado.usuario.first_name }}  {{ piuCompletoFavoritado.usuario.last_name }}</h2>
+        <p class="favoritado">@ {{ piuCompletoFavoritado.usuario.username }}</p>
+      </ion-item>
+        
+      <ion-card-content>
+        <p (ngModel)="mensagem" class="favoritado-msg">{{ piuCompletoFavoritado.conteudo }}</p>
+      </ion-card-content>
+        
+      <ion-row>
+        <ion-col>
+          <button class="heart-btn" ion-button icon-start clear small (click)="destacaPiu()">
+            <ion-icon name="star"></ion-icon>
+            Destacar
+          </button>
+        </ion-col>
+        <ion-col>
+          <button class="share-btn" ion-button icon-start clear small (click)="vemDeZap()">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+            Zip zop
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note class="nota">
+            {{ piuCompletoFavoritado.data | date: 'dd/MM/yy' }}
+          </ion-note>
+        </ion-col>
+      </ion-row>
+        
+    </ion-card>
+
+    <ion-card *ngFor="let piuCompleto of piusInvertidoNaoFavoritado">
+
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="../../assets/img/avatar-padrao.jpg">
+        </ion-avatar>
+        <h2>{{ piuCompleto.usuario.first_name }}  {{ piuCompleto.usuario.last_name }}</h2>
+        <p>@ {{ piuCompleto.usuario.username }}</p>
       </ion-item>
     
       <ion-card-content>
@@ -42,7 +86,7 @@
           </button>
         </ion-col>
         <ion-col center text-center>
-          <ion-note class="nota" displayFormat="MM/DD/YY">
+          <ion-note class="nota">
             {{ piuCompleto.data | date: 'dd/MM/yy' }}
           </ion-note>
         </ion-col>
@@ -50,5 +94,9 @@
     
     </ion-card>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

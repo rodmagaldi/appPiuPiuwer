@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, normalizeURL } from 'ionic-angular';
 import { Piu } from '../../modelos/piu';
 import { ListaPiusProvider } from '../../providers/lista-pius/lista-pius';
 import { LoginProvider } from '../../providers/login/login';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ListaUsuariosProvider } from '../../providers/lista-usuarios/lista-usuarios';
+import { Camera } from "@ionic-native/camera"
 
 @IonicPage()
 @Component({
@@ -32,14 +33,15 @@ export class PerfilPage {
     private _listaPius: ListaPiusProvider,
     private _login: LoginProvider,
     private _socialSharing: SocialSharing,
-    private _listaUsuarios: ListaUsuariosProvider) {
+    private _listaUsuarios: ListaUsuariosProvider,
+    private _camera: Camera) {
 
       this._listaPius.listaPius().subscribe(
         (pius) => {
           this.pius = pius;
           this.piusInvertido = this.pius.reverse();
           for (let piu of this.piusInvertido) {
-            if (piu.usuario == this._login.userID) {
+            if (piu.usuario['id'] == this._login.userID) {
               this.meusPius.push(piu)
             }
           }
@@ -63,6 +65,18 @@ export class PerfilPage {
           console.error(erro)
         }
       )
+  }
+
+  tiraFoto() {
+    this._camera.getPicture({
+      destinationType: this._camera.DestinationType.FILE_URI,
+      saveToPhotoAlbum: true,
+      correctOrientation: true,
+    }).then(
+      fotoUri => {
+        fotoUri = normalizeURL(fotoUri);
+      }
+    )
   }
 
   vemDeZap() {
